@@ -44,6 +44,19 @@ the `sudo` feature enabled and Ghostty will alias sudo to automatically do
 this for you. To enable the shell-integration feature specify
 `shell-integration-features = sudo` in your configuration.
 
+## Fedora's toolbx
+
+If you use toolbx containers that do not have Ghostty's terminfo entry,
+you will see error messages like `missing or unsuitable terminal:
+xterm-ghostty` when running some programs.
+
+To resolve this, first enter the toolbx container and then copy ghostty's
+terminfo to the container using the following one-liner:
+
+```sh
+flatpak-spawn --env=TERM=xterm-ghostty --host infocmp -x | tic -x -
+```
+
 ## SSH
 
 If you use SSH to connect to other machines that do not have Ghostty's
